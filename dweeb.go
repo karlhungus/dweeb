@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -28,6 +29,7 @@ func main() {
 		slice := strings.SplitN(r.URL.Path, "/", 4)
 		city := slice[3]
 		country := slice[2]
+		log.Printf("country: %s, city: %s", country, city)
 
 		temp, err := mw.temperature(country, city)
 		if err != nil {
