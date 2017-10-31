@@ -39,9 +39,10 @@ func main() {
 
 		w.Header().Set("Content-Type", "application/json; charset-utf-8")
 		json.NewEncoder(w).Encode(map[string]interface{}{
-			"city": city,
-			"temp": temp,
-			"took": time.Since(begin).String(),
+			"city":   city,
+			"temp":   temp,
+			"temp_c": temp - 273.15,
+			"took":   time.Since(begin).String(),
 		})
 	})
 	http.ListenAndServe(":8080", nil)
